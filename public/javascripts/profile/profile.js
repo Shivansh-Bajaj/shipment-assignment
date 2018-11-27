@@ -12,7 +12,6 @@ angular.module('myApp.profile', ['ngRoute', 'myApp.authService'])
     $scope.id = $routeParams.id;
     authService.getUser($scope.id)
         .then(resp => {
-            console.log(resp);
             if (resp.status === 200) {
               $scope.data = resp.data.data;
             } else {

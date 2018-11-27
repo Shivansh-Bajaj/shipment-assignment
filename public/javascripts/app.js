@@ -33,7 +33,6 @@ config(['$locationProvider', '$routeProvider', '$httpProvider', function($locati
                 }
             },
             'responseError': function(response) {
-                console.log($location.path);
                 if(response.status === 401 || response.status === 403) {
                     $location.path('/login');
                 }

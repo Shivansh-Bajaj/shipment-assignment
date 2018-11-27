@@ -25,11 +25,23 @@ module.exports = {
     return answer;
   },
   upvote: async function(answerId, user) {
-    let answer = await answerModel.findOneAndUpdate({"_id": answerId}, {"$push": {"upvote": user}, "$pull": {"downvote": user}, "$inc": {votes: 1}});
+    let answer = await answerModel.findOne({"_id": answerId});
+    if(answer.upvote.indexOf(user) === -1) {
+      answer.upvote.push(user);
+      answer.downvote.pull(user);
+      answer.votes += 1;
+      await answer.save();
+    };
     return answer;
   },
   downvote: async function(answerId, user) {
-    let answer = await answerModel.findOneAndUpdate({"_id": answerId}, {"$pull": {"upvote": user}, "$push": {"downvote": user}, "$inc": {votes: -1}});
+    let answer = await answerModel.findOne({"_id": answerId});
+    if(answer.downvote.indexOf(user) === -1) {
+      answer.downvote.push(user);
+      answer.upvote.pull(user);
+      answer.votes -= 1;
+      await answer.save();
+    };
     return answer;
   }
 };

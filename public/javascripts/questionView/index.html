@@ -1,20 +1,15 @@
 <div class="col-lg-8">
-    <!-- Title -->
-    <h1 class="mt-4">{{data.title}}    <b ng-if="!isFav">&#9734;</b><b ng-if="isFav">&#9733;</b></h1>
-    <!-- Author -->
+    <h1 class="mt-4">{{data.title}}    <b ng-if="!isFav" ng-click="fav()">&#9734;</b><b ng-if="isFav" ng-click="fav()">&#9733;</b></h1>
     <p class="lead">
       by
       <a href="/#!/profile/{{data.by._id}}">{{data.by.username}}</a>
     </p>
     <hr>
-    <!-- Date/Time -->
     <p>Posted on {{data.createdAt}}</p>
     <hr>
-    <!-- Preview Image -->
     <hr>
     <p>{{data.body}}</p>
     <hr>
-    <!-- Comments Form -->
     <div class="card my-4">
       <h5 class="card-header">answer question:</h5>
       <div class="card-body">
@@ -26,7 +21,6 @@
         </form>
       </div>
     </div>
-    <!-- Single Comment -->
     <div ng-repeat="answer in answers" class="media mb-4">
       <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
       <div class="media-body">

@@ -9,7 +9,6 @@ angular.module('myApp.dashboard', ['ngRoute', 'ngTagsInput', 'myApp.questionsSer
       });
   }])
   .controller('dashboardController', [ '$scope', 'questionsService', '$location', '$window',function($scope, questionsService, $location, $window) {
-    console.log('enter the valley');
     $scope.title = "";
     $scope.body = "";
     $scope.error = "";

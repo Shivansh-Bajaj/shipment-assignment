@@ -9,5 +9,15 @@ module.exports = {
   upsert: async function(data) {
     let answer = await answerModel.findOneAndUpdate(data, data, {upsert:true, new:true});
     return answer;
+  },
+  addFav: async function(question, user) {
+    user.favQuestions.push(question);
+    await user.save();
+    return user;
+  },
+  remFav: async function(question, user) {
+    user.favQuestions.pull(question);
+    await user.save();
+    return user;
   }
 }

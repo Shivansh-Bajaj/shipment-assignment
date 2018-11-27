@@ -55,6 +55,57 @@ myModule.factory('questionsService', function($q, $http, $window) {
               throw 'fail to fetch question';
             } 
           });
-      }
+      },
+      addfav: function (question) {
+        return $http({
+            method: 'POST',
+            url: '/api/v1/user/question/answer/addfav',
+            header: {
+                'content-type': 'application/json'
+            },
+            data: {question}
+        })
+        .then((resp) => {
+            if (resp.status === 200) {
+                return resp.data;                
+            } else {
+                throw 'fail to add question';
+            }
+        });
+    },
+    remfav: function (question) {
+        return $http({
+            method: 'POST',
+            url: '/api/v1/user/question/answer/remfav',
+            header: {
+                'content-type': 'application/json'
+            },
+            data: {question}
+        })
+        .then((resp) => {
+            if (resp.status === 200) {
+                return resp.data;                
+            } else {
+                throw 'fail to add question';
+            }
+        });
+    },
+    checkfav: function (question) {
+        return $http({
+            method: 'POST',
+            url: '/api/v1/user/question/answer/checkfav',
+            header: {
+                'content-type': 'application/json'
+            },
+            data: {question}
+        })
+        .then((resp) => {
+            if (resp.status === 200) {
+                return resp.data;
+            } else {
+                throw 'fail to add question';
+            }
+        });
+    }
     };
 });

@@ -103,6 +103,51 @@ router.post('/question/answer/downvote', async function(req, res) {
   }
 });
 
+router.post('/question/answer/checkfav', async function(req, res) {
+  try {
+    let resp = await req.user.favQuestions.indexOf(req.body.question);
+    return res.status(200).json({
+      'status': 'success',
+      'data': (resp == -1?false:true)
+    });
+  } catch(e) {
+    res.status(500).json({
+      'status': 'fail',
+      'err': JSON.stringify(e)
+    });
+  }
+});
+
+router.post('/question/answer/addfav', async function(req, res) {
+  try {
+    let user = await userServices.addFav(req.body.question, req.user);
+    return res.status(200).json({
+      'status': 'success',
+      'data': user
+    }); ;
+  } catch(e) {
+    res.status(500).json({
+      'status': 'fail',
+      'err': JSON.stringify(e)
+    });
+  }
+});
+
+router.post('/question/answer/remfav', async function(req, res) {
+  try {
+    let user = await userServices.remFav(req.body.question, req.user);
+    return res.status(200).json({
+      'status': 'success',
+      'data': user
+    }); ;
+  } catch(e) {
+    res.status(500).json({
+      'status': 'fail',
+      'err': JSON.stringify(e)
+    });
+  }
+});
+
 router.get('/question/answer', async function(req, res) {
   try {
     let answers = await answerServices.getAnswerByQuestion(req.query.question);
@@ -138,16 +183,5 @@ router.post('/question/answer', async function(req, res) {
     });
   }
 });
-
-// router.post('/answer/add', async function(req, res) {
-//   try {
-    
-//   } catch(e) {
-//   res.status(500).json({
-//     'status': 'fail',
-//     'err': JSON.stringify(e)
-//   });
-// }
-// });
 
 module.exports = router;
