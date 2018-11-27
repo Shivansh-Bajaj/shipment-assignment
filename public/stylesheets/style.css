@@ -1,0 +1,78 @@
+
+/* app css stylesheet */
+
+
+body {
+  /*background-color: #d7d5c7;*/
+  min-height: 100vh;
+  font: normal 16px sans-serif;
+  /*padding: 40px 0;*/
+}
+
+.post-box {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 10px;
+}
+
+.container.gallery-container {
+  background-color: #fff;
+  color: #35373a;
+  min-height: 100vh;
+  padding: 30px 50px;
+  border: 2px solid black;
+}
+
+.gallery-container h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: bold;
+}
+
+.gallery-container p.page-description {
+  text-align: center;
+  margin: 25px auto;
+  font-size: 18px;
+  color: #999;
+  border: 2px solid black;
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background-color: #333; */
+}
+
+li {
+  float: left;
+  width: 50%;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+  color: white;
+  background: #00cc00;
+}
+
+/* .active {
+  background-color: #4CAF50;
+} */
+
+.margint {
+  margin-top: 80px;
+}
+

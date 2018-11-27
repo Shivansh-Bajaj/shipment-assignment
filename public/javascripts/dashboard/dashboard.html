@@ -1,0 +1,19 @@
+<div ng-include="'javascripts/dashboard/modal.html'"></div>
+<br />
+<div class="card my-12">
+    <h5 class="card-header">Search</h5>
+    <div class="card-body">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search for question...">
+        
+      </div>
+    </div>
+      <div ng-repeat="question in data | filter:search" class="post-box col-md-10">
+        <a href="/#!/questions/{{question._id}}" class="mb-0">
+          <p>{{question.title}}</p>
+          <footer class="blockquote-footer">by {{question.by.username}}
+            <cite title="Source Title"> No of answers: {{question.answers.length}}</cite>
+          </footer>
+        </a>
+      </div>
+  </div>

@@ -1,0 +1,41 @@
+<div class="card">
+    <h5 class="card-header">{{data.username}}</h5>
+  <div class="card-body">
+    <p>No of Questions :   {{data.questions.length}}</p> 
+    <p>No of Favourite Questions :   {{data.favQuestions.length}}</p> 
+  </div>
+</div>
+<br />
+<div class="card my-12">
+  <h5 class="card-header">{{data.username}} asked Questions</h5>
+  <div class="card-body">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search" placeholder="Search for question...">
+    </div>
+  </div>
+    <div ng-repeat="question in data.questions | filter:search" class="post-box col-md-10">
+      <a href="/#!/questions/{{question._id}}" class="mb-0">
+        <p>{{question.title}}</p>
+        <footer class="blockquote-footer">by {{question.by.username}}
+          <cite title="Source Title"> No of answers: {{question.answers.length}}</cite>
+        </footer>
+      </a>
+    </div>
+</div>
+<br />
+<div class="card my-12">
+    <h5 class="card-header">{{data.username}} Favourite Questions</h5>
+    <div class="card-body">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="searchFav" placeholder="Search for question...">
+      </div>
+    </div>
+      <div ng-repeat="question in data.favQuestions | filter:searchFav" class="post-box col-md-10">
+        <a href="/#!/questions/{{question._id}}" class="mb-0">
+          <p>{{question.title}}</p>
+          <footer class="blockquote-footer">by {{question.by.username}}
+            <cite title="Source Title"> No of answers: {{question.answers.length}}</cite>
+          </footer>
+        </a>
+      </div>
+  </div>

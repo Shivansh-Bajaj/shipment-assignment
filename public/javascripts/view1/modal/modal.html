@@ -1,0 +1,39 @@
+<span class="close cursor" ng-click="close()">&times;</span>
+<div class="modal-content" ng-if="state == 0">
+    <div class="row">
+        <!--<div class="col-lg-6">-->
+        <div ng-repeat="(key, row) in size" class=" col-md-6 col-sm-12 cropArea">
+            <p class="text">{{key}} ( result size: {{row['result-size'].w}} X {{row['result-size'].h}} )</p>
+            <ui-cropper image="myImage" area-type="rectangle" aspect-ratio="row['aspect-ratio']" result-image="results[key]" result-image-size="{w: row['result-size'].w, h: row['result-size'].h}" canvas-scalemode="true"></ui-cropper>
+        </div>
+        <div class="col-md-12">
+            <button ng-click="submit()" class="btn btn-block btn-lg btn-success">submit</button>
+        </div>
+    </div>
+
+
+</div>
+<div class="modal-content black" ng-if="state == 1">
+    <img class="loader" src="../../static/pageloader.gif">
+</div>
+
+<div class="modal-content" ng-if="state==2">
+    <div class="row">
+        <div class=" col-md-6 col-sm-12 cropArea">
+            <p class="text">image Horizontal</p>
+            <img ng-src="{{results.imageHorizontal}}">
+        </div>
+        <div class="col-md-6 col-sm-12 cropArea">
+            <p class="text">image Vertical</p>
+            <img ng-src="{{results.imageVertical}}">
+        </div>
+        <div class=" col-md-6 col-sm-12 cropArea">
+            <p class="text">image Horizontal Small</p>
+            <img ng-src="{{results.imageHorizontalSmall}}">
+        </div>
+        <div class=" col-md-6 col-sm-12 cropArea">
+            <p class="text">image Gallery</p>
+            <img src="{{results.imageGallery}}">
+        </div>
+    </div>
+</div>

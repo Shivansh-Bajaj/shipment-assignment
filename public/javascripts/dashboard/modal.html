@@ -1,0 +1,44 @@
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">New Question</button>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title"> Add Question </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" >
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Title :</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="title" ng-model="title" placeholder="Title" name="title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Body :</label>
+            <div class="col-sm-10">          
+                <textarea class="form-control" id="body" placeholder="body" ng-model="body" name="body" rows="3"></textarea>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-2" for="tag">tag:</label>
+              <tags-input ng-model="tags">
+                  <!-- <auto-complete source="loadTags($query)"></auto-complete> -->
+              </tags-input>
+            </div>
+          <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" ng-click="add(title, body, tags)" class="btn btn-secondary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+
+  </div>
+</div>
