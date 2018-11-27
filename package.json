@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "prestart": "npm install"
+    "prestart": "npm install",
     "postinstall": "cd public && bower install"
   },
   "dependencies": {
