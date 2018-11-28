@@ -1,6 +1,8 @@
 <div ng-include="'javascripts/dashboard/modal.html'"></div>
 <br />
-<div class="card my-12">
+<p ng-if="forTag!==''">tag: {{forTag}}</p>
+<div class="row">
+<div class="card col-md-8">
     <h5 class="card-header">Search</h5>
     <div class="card-body">
       <div class="input-group">
@@ -17,3 +19,19 @@
         </a>
       </div>
   </div>
+
+  <div class="card col-md-4">
+    <h5 class="card-header">Categories</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <ul class="list-unstyled mb-0">
+            <li ng-repeat="tag in tags">
+              <a ng-click="getByTag(tag._id, tag.name)">{{tag.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

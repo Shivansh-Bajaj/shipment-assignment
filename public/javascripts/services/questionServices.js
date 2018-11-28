@@ -39,6 +39,39 @@ myModule.factory('questionsService', function($q, $http, $window) {
               } 
             });
         },
+        fetchByTag: function (tag) {
+            return $http({
+                method: 'GET',
+                url: '/api/v1/user/questions',
+                header: {
+                    'content-type': 'application/json'
+                },
+                param: {tag}
+            })
+            .then((resp) => {
+              if (resp.status === 200) {
+                return resp.data;                
+              } else {
+                throw 'fail to fetch questions';
+              } 
+            });
+        },
+        fetchTags: function () {
+            return $http({
+                method: 'GET',
+                url: '/api/v1/user/tags',
+                header: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then((resp) => {
+              if (resp.status === 200) {
+                return resp.data;                
+              } else {
+                throw 'fail to fetch questions';
+              } 
+            });
+        },
         fetch: function (id) {
           return $http({
               method: 'GET',

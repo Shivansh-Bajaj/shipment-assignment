@@ -37,8 +37,9 @@ module.exports = {
   get: async function(data) {
     let question = await questionModel.find(data).populate('by tags');
     return question;
+  },
+  getTags: async function() {
+    let tag = await tagModel.find({});
+    return tag;
   }
-  // addAnswer: async function(answer, question) {
-    
-  // }
 };

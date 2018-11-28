@@ -4,7 +4,10 @@ var myModule = angular.module('myApp.authService', []);
 myModule.factory('authService', function($q, $http, $window) {
     return {
         getToken: function() {
-            return $window.localStorage.getItem(token);    
+            return $window.localStorage.getItem('token');    
+        },
+        logout: function() {
+            $window.localStorage.removeItem('token');
         },
         login: function (username, password) {
             return $http({

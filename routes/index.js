@@ -19,6 +19,6 @@ router.get('/tags', async function(req, res) {
       'err': JSON.stringify(e)
     });
   }
-})
+});
 
 module.exports = router;

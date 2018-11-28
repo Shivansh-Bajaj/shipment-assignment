@@ -41,4 +41,13 @@ config(['$locationProvider', '$routeProvider', '$httpProvider', function($locati
         };
     }]);
     // }
+}])
+.controller('mainCtrl', ['$scope', 'authService', '$location', '$window', function($scope, authService, $location, $window) {
+    $scope.isLogin = function() {
+        return authService.getToken() !== null;
+    };
+    $scope.logout = function() {
+        authService.logout();
+        $window.location.reload();
+    };
 }]);

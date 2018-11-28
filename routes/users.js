@@ -21,6 +21,21 @@ router.get('/', async function(req, res) {
   }
 });
 
+router.get('/tags', async function(req, res) {
+  try {
+    let tags = await questionServices.getTags();
+    return res.status(200).json({
+      'status': 'success',
+      'data': tags
+    });
+  } catch(e) {
+    res.status(500).json({
+      'status': 'fail',
+      'err': JSON.stringify(e)
+    });
+  }
+});
+
 router.get('/question', async function(req, res) {
   try {
     let questions = await questionServices.getOne({"_id": req.query.id});
@@ -39,8 +54,8 @@ router.get('/question', async function(req, res) {
 router.get('/questions', async function(req, res) {
   try {
     let str = {};
-    if (req.body.hasOwnProperty('tag')) {
-      str['tags'] = tag;
+    if (req.query.hasOwnProperty('tag')) {
+      str['tags'] = req.query.tag;
     };
     let questions = await questionServices.get(str);
     return res.status(200).json({

@@ -141,14 +141,14 @@ describe('user APIs', function() {
       chai.request(server)
       .post('/api/v1/user/question/add')
       .set('Authorization', 'bearer ' + res.body.token)
-      .send({title: 'test question', body: 'test body', tags: {name: 'test'}})
+      .send({title: 'test question', body: 'test body', tags: [{name: 'test'}]})
       .end(function(err, res) { 
+        console.log(res.body);
         res.should.have.status(200);
         res.body.should.have.property('status');
         res.body.should.have.property('data');
         res.body.status.should.equal('success');
-        let data = req.body.data;
-        console.log(req.body);
+        let data = res.body.data;
         db.Question.findOne({'_id': res.body._id, 'title': 'test question', 'body': 'test body'})
         .then(resp => {
             if (resp) {

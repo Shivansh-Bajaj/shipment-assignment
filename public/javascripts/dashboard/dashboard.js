@@ -5,7 +5,7 @@ angular.module('myApp.dashboard', ['ngRoute', 'ngTagsInput', 'myApp.questionsSer
       $routeProvider.when('/dashboard', {
           templateUrl: 'javascripts/dashboard/dashboard.html',
           controller: 'dashboardController',
-          css: 'javascript/dashbaord/dashbaord.css'
+          css: 'javascripts/dashboard/dashboard.css'
       });
   }])
   .controller('dashboardController', [ '$scope', 'questionsService', '$location', '$window',function($scope, questionsService, $location, $window) {
@@ -14,10 +14,19 @@ angular.module('myApp.dashboard', ['ngRoute', 'ngTagsInput', 'myApp.questionsSer
     $scope.error = "";
     $scope.tags = [];
     $scope.data = [];
+    $scope.forTag = "";
     $scope.search = "";
     questionsService.fetchAll()
     .then(resp => {
         $scope.data = resp.data;
+        $scope.error = ""; 
+    })
+    .catch(err => {
+        $scope.error = 'unable to fetch questions';
+    });
+    questionsService.fetchTags()
+    .then(resp => {
+        $scope.tags = resp.data;
         $scope.error = ""; 
     })
     .catch(err => {
@@ -36,7 +45,21 @@ angular.module('myApp.dashboard', ['ngRoute', 'ngTagsInput', 'myApp.questionsSer
                 $window.location.reload();
             });
         }
+    };
+    $scope.getByTag = function(tag, name) {
+        questionsService.fetchByTag(tag)
+        .then(resp => {
+            $scope.data = resp.data;
+            $scope.forTag = name;
+            $scope.error = ""; 
+        })
+        .catch(err => {
+            $scope.error = 'unable to fetch questions';
+            alert($scope.error);
+            $window.location.reload();
+        });
     }
+
     // $scope.loadTags = function(query) {
     //      return $http.get('/tags?query=' + query);
     // };
