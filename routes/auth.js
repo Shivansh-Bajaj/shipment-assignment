@@ -36,14 +36,16 @@ router.post('/login', function (req, res, next) {
     passport.authenticate('local', {session: false}, (err, user, info) => {
       if (err) {
         return res.status(401).json({
-            message: 'Something is not right',
-            user   : user
+            'status': 'success',
+            'message': 'Something is not right',
+            'user'   : user
         });
       }
       if (!user) {
         return res.status(401).json({
-            message: 'invalid credential',
-            user   : user
+          'status': 'success',
+          'message': 'invalid credential',
+          'user'   : user
         });
       }
       req.login(user, {session: false}, (err) => {
@@ -55,7 +57,7 @@ router.post('/login', function (req, res, next) {
           username: user.username,
           id: user.id
         }, 'nvjdscijdijsiddwr44534534k3232');
-        return res.json({user, token});
+        return res.json({'user':user, 'token':token, 'status':'success'});
       });
     })(req, res);
   } catch (e){

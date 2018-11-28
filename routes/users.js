@@ -38,14 +38,18 @@ router.get('/question', async function(req, res) {
 
 router.get('/questions', async function(req, res) {
   try {
-    let questions = await questionServices.get({});
+    let str = {};
+    if (req.body.hasOwnProperty('tag')) {
+      str['tags'] = tag;
+    };
+    let questions = await questionServices.get(str);
     return res.status(200).json({
       'status': 'success',
       'data': questions
     });
   } catch(e) {
     res.status(500).json({
-      'status': 'fail',
+      'status': 'fail', 
       'err': JSON.stringify(e)
     });
   }
@@ -66,7 +70,7 @@ router.post('/question/add', async function(req, res) {
       });  
     }
   } catch(e) {
-    res.status(500).json({
+    res.status(422).json({
       'status': 'fail',
       'err': JSON.stringify(e)
     });
