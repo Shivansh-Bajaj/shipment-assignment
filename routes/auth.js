@@ -1,3 +1,4 @@
+const config = require('../config.json');
 const express = require('express');
 const router  = express.Router();
 const jwt = require('jsonwebtoken');
@@ -56,7 +57,7 @@ router.post('/login', function (req, res, next) {
         const token = jwt.sign({
           username: user.username,
           id: user.id
-        }, 'nvjdscijdijsiddwr44534534k3232');
+        }, config.jwtKey);
         return res.json({'user':user, 'token':token, 'status':'success'});
       });
     })(req, res);

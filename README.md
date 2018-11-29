@@ -1,16 +1,24 @@
 # TECHOVERSTACK  
 
 ## dependencies  
-nodeJS > 9.1
+nodeJS > 9.1  
+  
 ## steps to build  
 ```
 npm install -g bower
 npm install
-```
+```  
+  
 ## steps to run
 ```
 npm start
 ```
+  
+## steps to run unit Test for APIs
+```
+npm test
+```  
+  
 ## TECHOVERSTACK DESIGN DOCUMENT:  
 *Functional Specifics*  
 ### Overview  

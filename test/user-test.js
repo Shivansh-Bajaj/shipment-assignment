@@ -202,7 +202,6 @@ describe('user APIs', function() {
         .then(resp => {
           async.each(res.body.data, (data, next) => {
             let check = resp.filter(element => {
-              console.log('id',element._id, data._id);
               return element._id.toString() == data._id && element.title.toString() == data.title && element.body.toString() == data.body;
             });
             check.length.should.equal(1);
