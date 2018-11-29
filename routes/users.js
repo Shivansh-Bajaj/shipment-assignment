@@ -85,7 +85,7 @@ router.post('/question/add', async function(req, res) {
       });  
     }
   } catch(e) {
-    res.status(422).json({
+    res.status(500).json({
       'status': 'fail',
       'err': JSON.stringify(e)
     });
@@ -137,7 +137,7 @@ router.post('/question/answer/checkfav', async function(req, res) {
   }
 });
 
-router.post('/question/answer/addfav', async function(req, res) {
+router.post('/question/addfav', async function(req, res) {
   try {
     let user = await userServices.addFav(req.body.question, req.user);
     return res.status(200).json({
@@ -152,7 +152,7 @@ router.post('/question/answer/addfav', async function(req, res) {
   }
 });
 
-router.post('/question/answer/remfav', async function(req, res) {
+router.post('/question/remfav', async function(req, res) {
   try {
     let user = await userServices.remFav(req.body.question, req.user);
     return res.status(200).json({

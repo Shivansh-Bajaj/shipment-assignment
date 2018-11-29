@@ -10,8 +10,8 @@
         
       </div>
     </div>
-      <div ng-repeat="question in data | filter:search" class="post-box col-md-10">
-        <a href="/#!/questions/{{question._id}}" class="mb-0">
+      <div class="col-md-10">
+        <a class="post-box" ng-repeat="question in data | filter:search" href="/#!/questions/{{question._id}}" class="mb-0">
           <p>{{question.title}}</p>
           <footer class="blockquote-footer">by {{question.by.username}}
             <cite title="Source Title"> No of answers: {{question.answers.length}}</cite>
@@ -19,8 +19,8 @@
         </a>
       </div>
   </div>
-
-  <div class="card col-md-4">
+  <div class="col-md-1"></div>
+  <div class="card col-md-3">
     <h5 class="card-header">Categories</h5>
     <div class="card-body">
       <div class="row">

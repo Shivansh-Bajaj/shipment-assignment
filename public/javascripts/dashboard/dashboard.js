@@ -13,6 +13,7 @@ angular.module('myApp.dashboard', ['ngRoute', 'ngTagsInput', 'myApp.questionsSer
     $scope.body = "";
     $scope.error = "";
     $scope.tags = [];
+    $scope.newtags = [];
     $scope.data = [];
     $scope.forTag = "";
     $scope.search = "";

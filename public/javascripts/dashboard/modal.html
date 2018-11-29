@@ -25,13 +25,13 @@
           </div>
           <div class="form-group">
               <label class="control-label col-sm-2" for="tag">tag:</label>
-              <tags-input ng-model="tags">
+              <tags-input ng-model="newtags">
                   <!-- <auto-complete source="loadTags($query)"></auto-complete> -->
               </tags-input>
             </div>
           <div class="form-group">        
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" ng-click="add(title, body, tags)" class="btn btn-secondary">Submit</button>
+              <button type="submit" ng-click="add(title, body, newtags)" class="btn btn-secondary">Submit</button>
             </div>
           </div>
         </form>

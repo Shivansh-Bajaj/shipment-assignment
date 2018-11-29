@@ -1,4 +1,4 @@
-# TECHOVERFLOW  
+# TECHOVERSTACK  
 
 ## dependencies  
 nodeJS > 9.1
@@ -11,7 +11,7 @@ npm install
 ```
 npm start
 ```
-## TECHOVERFLOW DESIGN DOCUMENT:  
+## TECHOVERSTACK DESIGN DOCUMENT:  
 *Functional Specifics*  
 ### Overview  
 TECHOVERFLOW is a forum for people to ask question and answer others questions.  

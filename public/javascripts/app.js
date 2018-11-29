@@ -43,9 +43,26 @@ config(['$locationProvider', '$routeProvider', '$httpProvider', function($locati
     // }
 }])
 .controller('mainCtrl', ['$scope', 'authService', '$location', '$window', function($scope, authService, $location, $window) {
+    $scope.myId = "";
+    if (authService.getToken() !== null) {
+        authService.getUser($scope.id)
+        .then(resp => {
+            if (resp.status === 200) {
+              $scope.myId = resp.data.data._id;
+            } else {
+              throw 'error';
+            }
+        })
+        .catch(err => {
+            $scope.error = 'unable to fetch user';
+            alert($scope.error);
+        });
+    }
+
     $scope.isLogin = function() {
         return authService.getToken() !== null;
     };
+
     $scope.logout = function() {
         authService.logout();
         $window.location.reload();

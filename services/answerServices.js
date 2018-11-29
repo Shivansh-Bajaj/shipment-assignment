@@ -27,8 +27,11 @@ module.exports = {
   upvote: async function(answerId, user) {
     let answer = await answerModel.findOne({"_id": answerId});
     if(answer.upvote.indexOf(user) === -1) {
-      answer.upvote.push(user);
-      answer.downvote.pull(user);
+      if(answer.downvote.indexOf(user) === -1) {
+        answer.upvote.push(user);
+      } else {
+        answer.downvote.pull(user);
+      }
       answer.votes += 1;
       await answer.save();
     };
@@ -37,8 +40,11 @@ module.exports = {
   downvote: async function(answerId, user) {
     let answer = await answerModel.findOne({"_id": answerId});
     if(answer.downvote.indexOf(user) === -1) {
-      answer.downvote.push(user);
-      answer.upvote.pull(user);
+      if(answer.upvote.indexOf(user) === -1) {
+        answer.downvote.push(user);
+      } else {
+        answer.upvote.pull(user);
+      }
       answer.votes -= 1;
       await answer.save();
     };
